@@ -13,9 +13,16 @@ function Join() {
   const [isEntering, setIsEntering] = useState(false);
   const router = useRouter();
 
+  // alphabet-numbers-underscore only
+  const regex = new RegExp((/^[A-Za-z0-9_]+$/));
+ 
   const setUserName = (e) => {
     if (e.key !== "Enter") return;
     if (!e.target.value) return;
+
+    // regex checks input value is alphabet-numbers-underscore only or not
+    // if not it will stop it with return
+    if (!regex.test(e.target.value)) return;
 
     setIsEntering(true);
   };
